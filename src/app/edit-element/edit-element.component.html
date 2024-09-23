@@ -1,0 +1,36 @@
+<div *ngIf="open">
+    <form [formGroup]="modelForm">
+        <div class="edit-container fm-mb-8">
+            <h3>Edit element</h3>
+            <mat-form-field class="fm-mb-8">
+                <input
+                    matInput
+                    formControlName="name"
+                    placeholder="Name"
+                >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select
+                    placeholder="Icon"
+                    formControlName="icon"
+                    (selectionChange)="onChangeIcon($event)"
+                >
+                    <mat-option
+                        *ngFor="let item of listIcons"
+                        [value]="item.icon"
+                    >
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button
+            type="submit"
+            (click)="onSubmitModel()"
+            mat-raised-button
+            color="primary"
+        >
+            Save
+        </button>
+    </form>
+</div>
